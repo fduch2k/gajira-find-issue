@@ -2,7 +2,7 @@ name: Jira Find issue key
 description: Find an issue inside event
 branding:
   icon: 'book-open'
-  color: 'blue'
+  color: 'green'
 inputs:
   string:
     description: Provide a string to extract issue key from
@@ -11,9 +11,13 @@ inputs:
     description: Find from predefined place (should be either 'branch', or 'commits')
     required: false
     default: commits
+  fields:
+    description: "Comma separated list of fields which should be added to outputs, example: 'summary,description'"
+    required: false
+    default: 'summary'
 outputs:
   issue:
-    description: Key of the found issue
+    description: JSON with issue data
 runs:
   using: 'node16'
   main: './dist/index.js'

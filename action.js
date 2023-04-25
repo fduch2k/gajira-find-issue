@@ -52,10 +52,10 @@ module.exports = class {
     }
 
     for (const issueKey of match) {
-      const issue = await this.Jira.getIssue(issueKey)
+      const issue = await this.Jira.getIssue(issueKey, { fields: this.argv.fields })
 
       if (issue) {
-        return { issue: issue.key }
+        return { issue: JSON.stringify(issue) }
       }
     }
   }
